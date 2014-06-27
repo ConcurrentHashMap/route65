@@ -1,0 +1,49 @@
+/**
+ * App-specific CSS changes for Route 65
+ *
+ * @author ConcurrentHashMap <ConcurrentHashMap@arcor.de>
+ * @license Licensed under MIT (https://github.com/ConcurrentHashMap/route65/blob/master/LICENSE)
+ */
+body {
+    overflow: hidden!important; 
+}
+.bootbox.modal {
+    overflow: hidden;
+}
+.warning.alert { 
+    border-radius: 0;
+    padding-bottom: 8px;
+    padding-top: 8px;
+    margin-bottom: 15px;
+}
+.content {
+    height: 245px;
+    overflow: auto;
+}
+.messages p {
+    margin-bottom: 0;
+}
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px;
+    padding-top: 8px;
+    background-color: #f5f5f5;
+}
+.message-right {
+    text-align: right;
+}
+.message-right p {
+    margin-bottom: 2px;
+}
+.message-content.alert {
+    padding: 2px;
+    border: 0;
+}
+.emoji {
+    width: 18px;
+    height: 18px;
+    display: inline-block;
+    margin-bottom: 3px;
+}

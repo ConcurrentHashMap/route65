@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app" ng-controller="appCtrl">
+    <head>
+        <title>Route 65 (Benutzer: {{user.name}})</title>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="./css/bootstrap.min.css" rel="stylesheet">
+        <link href="./css/app.css" rel="stylesheet">
+    </head>
+    <body>
+        <div class="warning alert alert-danger">
+            <i class="glyphicon glyphicon-exclamation-sign"></i> <b>Achtung, Beta-Preview!</b> Bitte keine sensiblen Daten (z.B. Passwörter) übertragen!
+        </div>
+
+        <div class="container">
+
+            <fieldset class="well">
+                <div class="content" auto-scroll>
+                    <div class="messages" ng-repeat="message in messages track by $index" render-emoji>
+                        <div ng-if="message.to === user.userId && message.from.peerId === ''" class="text-muted">
+                            <p><small>{{message.timestamp | date:'dd.MM., HH:mm'}}</small> {{message.from.name}}: {{message.message}}</p>
+                        </div>
+                        <div ng-if="message.from.peerId === user.userId" class="message-right">
+                            <p><small>{{message.timestamp | date:'dd.MM., HH:mm'}}</small> <b>{{message.from.name}}</b> <i class="glyphicon glyphicon-ok"></i></p><span class="message-content alert alert-success">{{message.message}}</span>
+                        </div>
+                        <div ng-if="message.from.peerId !== '' && message.from.peerId !== user.userId">
+                            <p><small>{{message.timestamp | date:'dd.MM., HH:mm'}}</small> <b>{{message.from.name}}</b> <i class="glyphicon glyphicon-comment"></i></p><span class="message-content alert alert-info">{{message.message}}</span>
+                        </div>
+                    </div>
+                </div>
+            </fieldset>
+
+        </div>
+
+        <div class="footer">
+            <div class="container">
+                <form ng-submit="connection.open ? sendMessage() : connect()">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Nachricht" ng-model="message" autofocus>
+                        <span class="input-group-btn">
+                            <button class="btn" ng-class="connection.open ? 'btn-success' : 'btn-warning'" type="submit">{{connection.open ? 'Senden' : 'Verbinden'}}</button>
+                        </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <script src="./js/jquery-1.11.1.min.js"></script>
+        <script src="./js/bootstrap.min.js"></script>
+        <script src="./js/bootbox.min.js"></script>
+        <script src="./js/angular.min.js"></script>
+        <script src="./js/emojify.min.js"></script>
+        <script src="./js/beeplay.min.js"></script>
+        <script src="./js/peer.min.js"></script>
+        <script src="./js/app.js"></script>
+    </body>
+</html>
